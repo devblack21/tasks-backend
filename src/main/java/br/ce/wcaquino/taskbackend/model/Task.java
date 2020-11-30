@@ -1,15 +1,14 @@
 package br.ce.wcaquino.taskbackend.model;
 
 import java.time.LocalDate;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
+@Table(name = "tasks")
 public class Task {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
 	@Column(nullable = false)
@@ -20,8 +19,6 @@ public class Task {
 	
 	public Task() {}
 
-	@Id
-	@GeneratedValue
 	public Long getId() {
 		return id;
 	}

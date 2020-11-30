@@ -4,7 +4,11 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.ComponentScans;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
+@EnableJpaRepositories("br.ce.wcaquino.taskbackend.repo")
 @SpringBootApplication
 public class TaskBackendApplication extends SpringBootServletInitializer {
 
@@ -12,8 +16,4 @@ public class TaskBackendApplication extends SpringBootServletInitializer {
 		SpringApplication.run(TaskBackendApplication.class, args);
 	}
 
-	@Override
-	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-		return application.sources(TaskBackendApplication.class);
-	}
 }
