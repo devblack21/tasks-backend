@@ -1,0 +1,8 @@
+pipeline {
+    agent any
+    stages ('Just Text') {
+        steps {
+            bat 'echo deu certo!'
+        }
+    }
+}
