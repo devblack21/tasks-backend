@@ -11,16 +11,16 @@ pipeline {
               bat 'mvn test'
             }
         }
-        stage ('Sonar Analysis') {
+        /* stage ('Sonar Analysis') {
             environment {
                 scannerHome = tool 'SONAR_SCANNER'
             }
              steps {
-              withSonarQubeEnv('SONAR_LOCAL') {
-                 bat "${scannerHome}/bin/sonar-scanner -e -Dsonar.projectKey=DeployBack -Dsonar.host.url=http:localhost:9000 -Dsonar.login=kdjkjffajkfjdkjfa8823hhh324 -Dsonar.java.binaries=targe -Dsonar.coverage.exclusions=**/.mvn/**,**/src/test/**,**/model/**,**Application.java"
-              }   
+              withSonarQubeEnv('SONAR_LOCAL') {*/
+                 //bat "${scannerHome}/bin/sonar-scanner -e -Dsonar.projectKey=DeployBack -Dsonar.host.url=http:localhost:9000 -Dsonar.login=kdjkjffajkfjdkjfa8823hhh324 -Dsonar.java.binaries=targe -Dsonar.coverage.exclusions=**/.mvn/**,**/src/test/**,**/model/**,**Application.java"
+             /* }   
             }    
-        }
+        } 
         stage ('Qualyte Gate') {
              steps {
                 sleep(20)
@@ -28,8 +28,8 @@ pipeline {
                     waitForQualityGate abortPipeline: true 
                 }
             }    
-        }
-         stage ('Deploy BackEnd') {
+        } */
+        stage ('Deploy BackEnd') {
              steps {
                 deploy adapters: [tomcat8(credentialsId: 'tomcat_login', path: '', url: 'http://localhost:8001/')], contextPath: 'tasks-backend', war: 'target/tasks-backend.war'
             }    
