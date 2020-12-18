@@ -51,14 +51,23 @@ pipeline {
                  }
             }    
         }
-         stage ('Functional Test') {
+        /*stage ('Functional Test') {
              steps {
                  dir('functional-test') {
                     git credentialsId: 'github_login', url: 'https://github.com/devblack21/task-functional-test.git'
                     bat 'mvn test'
                  }
             }    
+        }*/
+
+        stage ('Deploy Prod') {
+             steps {
+                bat 'docker-compose build'
+                bat 'docker-compose up --force-recreate -d'
+            }    
         }
+
+        
 
     }
 }
